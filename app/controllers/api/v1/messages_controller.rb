@@ -2,7 +2,11 @@ class Api::V1::MessagesController < ApplicationController
   before_filter :basic_auth, except: [:receive, :validate]
 
   def index
-    render json: messages, each_serializer: MessageSerializer
+    mess = messages.map{|m|
+      m.localhost = localhost
+      m
+    }
+    render json: mess, each_serializer: MessageSerializer
   end
 
   def create

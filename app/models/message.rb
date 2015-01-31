@@ -1,5 +1,6 @@
 class Message < ActiveRecord::Base
   include Apiable
+  attr_accessor :localhost
 
   def self.fetch_from_url url, user, pass
     m = Message.new
