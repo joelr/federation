@@ -64,3 +64,14 @@ HostBroadcaster.broadcast_local
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+
+
+
+
+
+heroku create my-node-app
+git push heroku master
+heroku addons:add heroku-postgresql:hobby-dev
+heroku run:detached rake db:migrate
