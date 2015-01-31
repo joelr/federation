@@ -6,6 +6,7 @@ class HostBroadcaster
       data: {
         host: host.host,
         name: host.name,
+        url: host.url,
         paypal_email: host.paypal_email,
         charity_id: host.charity_id,
       }

@@ -2,7 +2,9 @@ class FederationBroadcaster
 
   def self.publish payload
     hosts_for_broadcast.each do |host|
-      result = HTTParty.post("#{host.path}/#{payload[:type]}", 
+      puts host.inspect
+      puts "#{host.url}/api/v1/#{payload[:type]}".inspect
+      result = HTTParty.post("#{host.url}/api/v1/#{payload[:type]}", 
         body: payload[:data].to_json,
         headers: { 'Content-Type' => 'application/json' }
       )
@@ -15,7 +17,7 @@ class FederationBroadcaster
     if !publish_local
       Host.all.reject{ |host| local_hosts.include?(host.host.downcase) }
     else
-      Host.all + Host.local_hosts
+      Host.all.to_a + Host.local_hosts
     end
   end
 end
