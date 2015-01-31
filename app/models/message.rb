@@ -29,7 +29,7 @@ class Message < ActiveRecord::Base
     end
     unless message.persisted?
       if payload[:sender_host].include?("local") || api_status.status == "ok"
-        message.update_attributes params
+        message.update_attributes payload
       else
         return false
       end
