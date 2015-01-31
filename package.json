@@ -1,0 +1,34 @@
+{
+  "name": "federation",
+  "version": "0.0.1",
+  "description": "A distributed tool to aid communication in times of crisis, censorship, and oppression.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joelr/federation.git"
+  },
+  "keywords": [
+    "federated"
+  ],
+  "author": "orodio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joelr/federation/issues"
+  },
+  "homepage": "https://github.com/joelr/federation",
+  "devDependencies": {
+    "6to5": "^3.2.0",
+    "jsx-loader": "^0.12.2",
+    "lodash": "^3.0.1",
+    "oro-dispatcher": "^1.1.3",
+    "oro-xhr": "^1.0.3",
+    "react": "^0.12.2",
+    "webpack": "^1.5.3"
+  }
+}
