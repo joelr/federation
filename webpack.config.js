@@ -4,7 +4,7 @@ module.exports = {
     }
 
 , output :
-    { path     : __dirname + "/app/assets/javascripts"
+    { path     : __dirname + "/public"
     , filename : "[name].js"
     }
 

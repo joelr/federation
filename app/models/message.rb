@@ -22,9 +22,13 @@ class Message < ActiveRecord::Base
     message.host = payload[:host]
     message.filter = payload[:filter]
 
-    api_status = api_get payload[:sender_host], 'messages/validate/' + payload[:uuid], {checksum: m.checksum}
+    if payload[:sender_host].include?("local")
+      api_status = Hashie::Mash.new
+    else
+      api_status = api_get payload[:sender_host], 'messages/validate/' + payload[:uuid], {checksum: m.checksum}
+    end
     unless message.persisted?
-      if api_status.status == "ok"
+      if payload[:sender_host].include?("local") || api_status.status == "ok"
         message.update_attributes params
       else
         return false
