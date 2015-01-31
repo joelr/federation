@@ -24,4 +24,5 @@ function notSoQuickPolls() {
 }
 
 notSoQuickPolls()
-setInterval(notSoQuickPolls(), 5000)
+setInterval(notSoQuickPolls, 5000)
+
