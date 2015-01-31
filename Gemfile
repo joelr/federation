@@ -16,6 +16,7 @@ gem 'hashie'
 gem 'httparty'
 gem 'em-http-request'
 gem 'newrelic_rpm'
+gem 'gibberish'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

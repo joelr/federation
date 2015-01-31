@@ -3,6 +3,10 @@ class Message < ActiveRecord::Base
 
   def self.publish from, params
     params[:host] ||= '*'
+    pass = params.delete :password
+    if pass.presence
+      params[:text] = Enc.cipher(pass, params[:text])
+    end
     m = create params.merge({sender_host: from.host, uuid: SecureRandom.uuid})
     m.broadcast
   end

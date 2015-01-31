@@ -32,6 +32,6 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def create_params
-    params.symbolize_keys.slice :text, :host, :filter
+    params.symbolize_keys.slice :text, :host, :filter, :password
   end
 end

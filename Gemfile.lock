@@ -51,6 +51,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.4)
     execjs (2.2.2)
+    gibberish (1.4.0)
     hashie (2.0.5)
     hike (1.2.3)
     http_parser.rb (0.6.0)
@@ -145,6 +146,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.8.1)
   coffee-rails (~> 4.0.0)
   em-http-request
+  gibberish
   hashie
   httparty
   jbuilder (~> 2.0)
