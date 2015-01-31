@@ -1,5 +1,7 @@
 class Api::V1::HostsController < ApplicationController
 
-  def index
+  def register
+    #host = Host.where(host: params)
+    render json: params
   end
 end

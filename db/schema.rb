@@ -11,9 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150131030837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "hosts", force: true do |t|
+    t.string   "name"
+    t.string   "paypal_email"
+    t.string   "charity_id"
+    t.string   "details"
+    t.string   "host",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "url"
+  end
+
+  add_index "hosts", ["host"], name: "index_hosts_on_host", using: :btree
+
+  create_table "messages", force: true do |t|
+    t.string   "text"
+    t.string   "type"
+    t.string   "sender_host"
+    t.string   "details"
+    t.string   "host",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["sender_host"], name: "index_messages_on_sender_host", using: :btree
+  add_index "messages", ["type"], name: "index_messages_on_type", using: :btree
+
+  create_table "subscriptions", force: true do |t|
+    t.string   "filter"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subscriptions", ["filter"], name: "index_subscriptions_on_filter", using: :btree
 
 end
