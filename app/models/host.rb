@@ -23,7 +23,11 @@ class Host < ActiveRecord::Base
   end
 
   def self.local_hosts
-    data_file = Rails.root.join 'config', 'hosts.yml'
+    if Rails.env.development?
+      data_file = Rails.root.join 'config', 'local_hosts.yml'
+    else
+      data_file = Rails.root.join 'config', 'hosts.yml'
+    end
 
     YAML.load_file(data_file).map do |_, attributes|
       h = Host.new attributes
