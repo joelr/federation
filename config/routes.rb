@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       resources :hosts, only: :index
       resources :messages
 
+      get 'hosts/local' => 'hosts#local'
+
       post "messages/receive" => 'messages#receive'
       post "host_register" => 'hosts#register'
       post "discover" => 'hosts#discover'

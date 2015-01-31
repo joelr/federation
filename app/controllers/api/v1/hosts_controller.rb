@@ -1,8 +1,12 @@
 class Api::V1::HostsController < ApplicationController
-  before_filter :basic_auth, only: :index
+  before_filter :basic_auth, only: [:index, :local]
 
   def index
-    render json: {hosts: Host.all}
+    render json: Host.all
+  end
+
+  def local
+    render json: localhost
   end
 
   def register
@@ -17,6 +21,6 @@ class Api::V1::HostsController < ApplicationController
 
   def host_params p = nil
     p ||= params
-    p.symbolize_keys.slice :host, :url, :paypal_email, :charity_id
+    p.symbolize_keys.slice :host, :url, :paypal_email, :charity_id, :name
   end
 end

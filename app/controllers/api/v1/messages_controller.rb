@@ -2,11 +2,10 @@ class Api::V1::MessagesController < ApplicationController
   before_filter :basic_auth, except: 'receive'
 
   def index
-    render json: {messages: Messages.all}
+    render json: {messages: Messages.limit(50).order('id desc')}
   end
 
   def create
-    puts create_params.inspect
     Messages::Broadcast.publish localhost, create_params
     render_ok
   end

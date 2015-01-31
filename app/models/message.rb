@@ -8,7 +8,8 @@ class Message < ActiveRecord::Base
   def broadcast
     FederationBroadcaster.publish({
       type: 'messages/receive',
-      data: self.as_json.merge(type: type)
+      data: self.as_json.merge(type: type),
+      host: host
     })
   end
 
