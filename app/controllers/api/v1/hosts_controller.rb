@@ -1,5 +1,5 @@
 class Api::V1::HostsController < ApplicationController
-  before_filter :basic_auth, only: [:index, :local]
+  before_filter :basic_auth, only: [:index, :local, :add]
 
   def index
     render json: Host.all
@@ -7,6 +7,12 @@ class Api::V1::HostsController < ApplicationController
 
   def local
     render json: localhost
+  end
+
+  def add
+    Host.add_host params[:host]
+    render_ok
+    HostBroadcaster.broadcast_local
   end
 
   def register

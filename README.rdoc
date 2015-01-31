@@ -35,6 +35,11 @@ Hosts:
 get local:
 /api/v1/hosts/local
 
+add:
+POST /api/v1/hosts/add
+params: host
+EG: curl -u user:lol --data "host=testpublisher.herokuapp.com" http://localhost:5000/api/v1/hosts/add
+
 
 Message:
 

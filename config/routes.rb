@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       get 'hosts/local' => 'hosts#local'
       get 'messages/validate/:uuid' => 'messages#validate'
 
+
+      post 'hosts/add' => 'hosts#add'
+
       post "messages/receive" => 'messages#receive'
       post "host_register" => 'hosts#register'
       post "discover" => 'hosts#discover'

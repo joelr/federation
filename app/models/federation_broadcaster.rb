@@ -29,3 +29,12 @@ class FederationBroadcaster
     end
   end
 end
+
+
+    # EventMachine.run {
+    #     http1 = EventMachine::HttpRequest.new("#{host.url}/api/v1/#{payload[:type]}").post body: payload[:data]
+    #     http1.callback do
+    #       puts http1.response
+    #       EventMachine.stop
+    #     end
+    #   }

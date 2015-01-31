@@ -8,7 +8,7 @@ class Host < ActiveRecord::Base
   end
 
   def self.add_host host
-    actual_url = url_from_host(params[:url])
+    actual_url = url_from_host(host)
     actual_host = host_from_url(host)
     host = Host.where(host: actual_host).first_or_initialize
     host.update_attributes url: actual_url
