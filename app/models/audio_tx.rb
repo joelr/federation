@@ -15,6 +15,7 @@ class AudioTx
     messages = Message.fetch_from_url "http://joel.coopcoopcoop.net", "user", "lol"
     messages.each do |message|
       $message_ids << message.uuid
+      puts message.text
     end
     while true do
       messages = Message.fetch_from_url "http://joel.coopcoopcoop.net", "user", "lol"
@@ -22,6 +23,7 @@ class AudioTx
       messages.each do |message|
         message = Message.new message.as_json
         $message_ids << message.uuid
+        puts message.text
         puts fldigi.get_tx_data()
         fldigi.add_tx_string(MessageSerializer.new(message).to_json)
         fldigi.send_buffer()
