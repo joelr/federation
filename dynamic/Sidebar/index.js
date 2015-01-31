@@ -25,7 +25,7 @@ function cs(state) {
 
 module.exports = React.createClass({
   displayName : "Sidebar",
-  getInitialState() { return {open: false} },
+  getInitialState() { return {open: true} },
 
   render() {
     var {state, open, close} = this
