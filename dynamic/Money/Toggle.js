@@ -10,7 +10,7 @@ module.exports = React.createClass({
     var {props, open} = this
 
     return <a href="#" className="HostMoney" onClick={open}>
-      <i className="fa fa-money"/>
+      <i className="fa fa-usd"/>
     </a>
   },
 

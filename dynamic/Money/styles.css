@@ -6,8 +6,8 @@
   color: tomato
 
 .MoneyActions
-  display : flex
-  justify-content: space-between
+  display       : flex
+  margin-bottom : 13px
 
   form
     flex    : 1

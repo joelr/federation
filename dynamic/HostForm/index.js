@@ -13,11 +13,13 @@ var Input      = factory("input",  "HostFormInput")
 var Submit     = factory("button", "HostFormSubmit")
 var HostIcon   = factory("i",      "fa fa-cube")
 var SubmitIcon = factory("i",      "fa fa-plus")
+var Loading    = factory("i",      "fa fa-circle-o-notch fa-spin")
 
 function state() {
   return {
-    host    : store.getHost(),
-    isValid : store.isValid()
+    host      : store.getHost(),
+    isValid   : store.isValid(),
+    isLoading : store.isLoading()
   }
 }
 
@@ -27,12 +29,14 @@ module.exports = React.createClass({
 
   render() {
     var {state, updateHost, submit} = this
-    var {host, isValid}             = state
+    var {host, isValid, isLoading}  = state
 
     return <Form onSubmit={submit}>
       <HostIcon/>
       <Input placeholder="Add Host" value={host} onChange={updateHost}/>
-      {isValid && <Submit onClick={submit}><SubmitIcon/></Submit>}
+      {isValid && <Submit onClick={submit}>
+        {isLoading ? <Loading/> : <SubmitIcon/>}
+      </Submit>}
     </Form>
   },
 
@@ -41,6 +45,9 @@ module.exports = React.createClass({
   submit(e) {
     e.preventDefault()
     var {isValid, host} = this.state
-    if (isValid) actions.submit(host);
+    if (isValid) {
+      this.setState({isLoading: true})
+      actions.submit(host)
+    }
   }
 });
