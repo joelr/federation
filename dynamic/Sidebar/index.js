@@ -14,6 +14,7 @@ var CloseIcon = factory("i",      "fa fa-chevron-left")
 var Overflow  = factory("div",    "SidebarOverflow")
 
 var HostForm = require("../HostForm")
+var Hosts    = require("../Hosts")
 
 function cs(state) {
   return cx({
@@ -33,6 +34,7 @@ module.exports = React.createClass({
     return <div className={cs(state)}>
       <Overflow>
         <HostForm/>
+        <Hosts/>
       </Overflow>
       {isOpen
         ? <Close onClick={close}><CloseIcon/></Close>
