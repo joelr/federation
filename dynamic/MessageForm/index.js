@@ -13,6 +13,7 @@ var Form          = factory("form",     "MessageForm")
 var MessageBox    = factory("textarea", "MessageBox")
 var Submit        = factory("button",   "MessageSubmitButton")
 var Actions       = factory("div",      "MessageActions")
+var SubmitIcon    = factory("i",        "fa fa-bullhorn")
 
 function csBox(state) {
   return cx({
@@ -51,7 +52,7 @@ module.exports = React.createClass({
       <textarea placeholder="What do you need to say?" className={csBox(state)} value={message} onChange={updateMessage}/>
       {length > 0 && <Actions>
         <div className={csCount(state)}>{remaining}</div>
-        { isValid && <Submit onClick={submit}>Broadcast</Submit> }
+        { isValid && <Submit onClick={submit}><SubmitIcon/> Broadcast</Submit> }
       </Actions>}
     </Form>
   },
