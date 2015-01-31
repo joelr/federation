@@ -15,6 +15,6 @@ module.exports = {
   updateMessage(message) { send("MESSAGE_FORM_UPDATE_MESSAGE", {message}) },
 
   submit(text) {
-    postMessage({text}).then(postMessageSuccess);
+    postMessage(text).then(postMessageSuccess);
   },
 }
