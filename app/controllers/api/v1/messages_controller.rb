@@ -12,7 +12,7 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def receive
-    Messages.build_from_payload message_params, receive_params
+    Message.build_from_payload receive_params
     render_ok
   end
 

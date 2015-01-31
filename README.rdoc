@@ -39,10 +39,11 @@ Index:
 GET /api/v1/messages
 
 Create/Publish:
-POST /api/v1/messages/create
+POST /api/v1/messages
 :text The message
 :host Message for specific host
 :filter Hashtag/channel here
+EG: curl -u user:lol --data "text=hi sup&host=123&filter=def" http://localhost:5000/api/v1/messages
 
 Boot:
 HostBroadcaster.broadcast_local

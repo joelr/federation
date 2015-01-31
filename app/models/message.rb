@@ -1,7 +1,7 @@
 class Message < ActiveRecord::Base
   def self.publish from, params
     params[:host] ||= '*'
-    m = create params.merge({sender_host: from, uuid: SecureRandom.uuid})
+    m = create params.merge({sender_host: from.host, uuid: SecureRandom.uuid})
     m.broadcast
   end
 
