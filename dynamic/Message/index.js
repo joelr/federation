@@ -6,6 +6,9 @@ var React   = require("react")
 var factory = require("../factory")
 var Moment  = require("moment")
 
+var MoneyToggle = require("../Money/Toggle")
+var MoneyForm   = require("../Money/Form")
+
 var Message  = factory("div", "Message")
 var Header   = factory("div", "MessageHeader")
 var Name     = factory("div", "MessageName")
@@ -30,13 +33,15 @@ module.exports = React.createClass({
   },
 
   render() {
-    var {text, sender_name: name, sender_host: host, created_at: time} = this.props;
+    var {text, uuid, sender_name: name, sender_host: host, created_at: time} = this.props;
 
     return <Message>
       <Header>
         <Name>{name || host}</Name>
+        <MoneyToggle uuid={"message"+uuid} host={host}/>
       </Header>
       <Content>
+        <MoneyForm uuid={"message"+uuid} host={host}/>
         {text}
       </Content>
       <Meta>
