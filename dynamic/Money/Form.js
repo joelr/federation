@@ -6,6 +6,7 @@ var React     = require("react")
 var B         = require("./Button")
 var store     = require("./store")
 var subscribe = require("oro-dispatcher/lib/subscribe")
+var post      = require("oro-xhr/lib/post")
 
 function state() {
   return {
@@ -17,13 +18,11 @@ module.exports = React.createClass({
   displayName : "Money/Form",
   mixins      : [subscribe(store, state)],
 
-  emailRes(data) { this.setState({email: "james@bjorkman.ca", status: "How much would you like to send?"}) },
-  getEmail(host) {},
+  emailRes(data) { this.setState({email: JSON.parse(data.text).paypal_email, status: "How much would you like to send?"}) },
 
   componentDidMount() {
     this.setState({status: "Fetching Payment Details..."})
-    setTimeout(this.emailRes.bind(this), 1000)
-    // getEmail(this.props.host).then(emailRes);
+    getEmail(this.props.host).then(this.emailRes)
   },
 
   render() {
@@ -43,3 +42,7 @@ module.exports = React.createClass({
     </div>
   }
 })
+
+function getEmail(host) {
+  return post("/api/v1/request_email", {host})
+}
