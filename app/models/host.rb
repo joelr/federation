@@ -5,6 +5,12 @@ class Host < ActiveRecord::Base
     Message.where(sender_host: host).order("id desc")
   end
 
+  def self.reset_all
+    Message.delete_all
+    Subscription.delete_all
+    Host.delete_all
+  end
+
   def self.build_from_payload params
     actual_host = host_from_url(params[:url])
     host = Host.where(host: actual_host).first_or_initialize

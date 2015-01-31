@@ -18,6 +18,7 @@ gem 'em-http-request'
 gem 'newrelic_rpm'
 gem 'gibberish'
 gem 'cinch'
+gem 'fldigi'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

@@ -1,8 +1,15 @@
 class Message < ActiveRecord::Base
   include Apiable
 
+  def self.fetch_from_url url, user, pass
+    m = Message.new
+    r = m.api_get url, "messages", {}, {username: user, password: pass}
+    r["messages"]
+  end
+
   def self.publish from, params
     params[:host] ||= '*'
+    params[:password] = "OMG"
     pass = params.delete :password
     if pass.presence
       params[:text] = Enc.cipher(pass, params[:text])

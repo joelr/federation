@@ -8,7 +8,6 @@ var map       = require("lodash/collection/map")
 var Host      = require("../Host")
 var subscribe = require("oro-dispatcher/lib/subscribe")
 var store     = require("./store")
-var actions   = require("./actions")
 
 function state() {
   return {
@@ -20,8 +19,6 @@ function state() {
 module.exports = React.createClass({
   displayName : "Hosts",
   mixins      : [subscribe(store, state)],
-
-  componentDidMount() { actions.poll() },
 
   render() {
     var {state} = this

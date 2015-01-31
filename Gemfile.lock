@@ -52,6 +52,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.4)
     execjs (2.2.2)
+    fldigi (0.1.15)
     gibberish (1.4.0)
     hashie (2.0.5)
     hike (1.2.3)
@@ -148,6 +149,7 @@ DEPENDENCIES
   cinch
   coffee-rails (~> 4.0.0)
   em-http-request
+  fldigi
   gibberish
   hashie
   httparty
