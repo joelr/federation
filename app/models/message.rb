@@ -9,7 +9,6 @@ class Message < ActiveRecord::Base
 
   def self.publish from, params
     params[:host] ||= '*'
-    params[:password] = "OMG"
     pass = params.delete :password
     if pass.presence
       params[:text] = Enc.cipher(pass, params[:text])
