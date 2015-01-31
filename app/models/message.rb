@@ -33,10 +33,10 @@ class Message < ActiveRecord::Base
     message.host = payload[:host]
     message.filter = payload[:filter]
 
-    if payload[:sender_host].include?("local")
-      api_status = Hashie::Mash.new
+    if true || payload[:sender_host].include?("local")
+      api_status = Hashie::Mash.new(status: 'ok')
     else
-      api_status = api_get payload[:sender_host], 'messages/validate/' + payload[:uuid], {checksum: m.checksum}
+      api_status = api_get payload[:sender_host], 'messages/validate/' + payload[:uuid], {checksum: message.checksum}
     end
     unless message.persisted?
       if payload[:sender_host].include?("local") || api_status.status == "ok"
