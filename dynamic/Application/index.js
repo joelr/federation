@@ -17,8 +17,8 @@ module.exports = React.createClass({
 
   render() {
     return <App>
-      <Header>Federation</Header>
       <Content>
+        <Header>Federation</Header>
         <Main/>
       </Content>
     </App>

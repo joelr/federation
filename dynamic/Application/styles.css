@@ -1,3 +1,16 @@
+.Application_header
+  max-width      : 420px
+  margin         : 21px auto 13px
+  font-family    : georgia
+  font-style     : italic
+  font-weight    : 200
+  letter-spacing : 0.16em
+  text-transform : lowercase
+  color          : tomato
+  padding        : 0 13px
+  font-size      : 21px
+  line-height    : 21px
+
 .Application_main
-  max-width : 300px
-  margin    : 10px auto
+  max-width : 420px
+  margin    : 13px auto 34px

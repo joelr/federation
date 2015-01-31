@@ -1,11 +1,14 @@
 "use strict";
 
+require("./styles.css")
+
 var React   = require("react")
 var factory = require("../factory")
 
 var Message = factory("div", "Message")
 var Header  = factory("div", "MessageHeader")
 var Name    = factory("div", "MessageName")
+var Host    = factory("div", "MessageHost")
 var Content = factory("div", "MessageContent")
 
 var {string, number} = React.PropTypes;
@@ -22,11 +25,13 @@ module.exports = React.createClass({
   },
 
   render() {
-    var {text, name, sender_host} = this.props;
+    var {text, sender_name: name, sender_host: host} = this.props;
 
     return <Message>
       <Header>
-        <Name>{name || sender_host}</Name>
+        <Name>{name || host}</Name>
+        <Host>truthtaco.com</Host>
+        {name !== undefined && <Host>{host}</Host>}
       </Header>
       <Content>
         {text}

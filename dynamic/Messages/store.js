@@ -15,11 +15,11 @@ module.exports = projection("MESSAGES", {
   getMessages(): Array<any> { return __Messages }
 
 }, function(payload) {
-  var {actionType, data} = payload.action
+  var {actionType, messages} = payload.action
 
   switch (actionType) {
     case "MESSAGES_UPDATE":
-      setMessages(data)
+      setMessages(messages)
       this.broadcast()
       break;
   }

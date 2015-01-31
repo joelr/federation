@@ -25,6 +25,8 @@ module.exports = projection("MESSAGE_FORM", {
 }, function(payload) {
   var {actionType, message} = payload.action
 
+  console.log(actionType, payload.action)
+
   switch (actionType) {
     case "MESSAGE_FORM_UPDATE_MESSAGE":
       setMessage(message)
