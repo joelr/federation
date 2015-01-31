@@ -14,7 +14,7 @@ class HostBroadcaster
       if r.presence
         r["hosts"].each do |payload|
           puts "ADDING A HOST? #{payload.inspect}"
-          payload = payload.as_json.symbolize_keys.slice :host, :url, :charity_id, :name, :uuid
+          payload = payload.as_json.symbolize_keys.slice :host, :url, :charity_id, :name
           Host.build_from_payload payload
         end
       end
