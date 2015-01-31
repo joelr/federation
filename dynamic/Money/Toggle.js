@@ -1,6 +1,7 @@
 "use strict";
 
-var React = require("react")
+var React   = require("react")
+var actions = require("./actions")
 
 module.exports = React.createClass({
   displayName : "Money/Toggle",
@@ -15,6 +16,6 @@ module.exports = React.createClass({
 
   open(e) {
     e.preventDefault()
-    console.log("money open", this.props.uuid)
+    actions.open(this.props.uuid)
   }
 })

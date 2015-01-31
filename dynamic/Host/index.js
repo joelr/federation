@@ -2,9 +2,9 @@
 
 require("./styles.css")
 
-var React    = require("react")
-var factory  = require("../factory")
-var {string} = React.PropTypes
+var React          = require("react")
+var factory        = require("../factory")
+var {string, bool} = React.PropTypes
 
 var Name       = factory("div", "HostName")
 var Host       = factory("div", "HostHost")
@@ -21,7 +21,7 @@ module.exports = React.createClass({
     host         : string,
     name         : string,
     uuid         : string,
-    paypal_email : string,
+    paypal_email : bool,
     charity_url  : string
   },
 

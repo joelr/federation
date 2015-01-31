@@ -2,16 +2,21 @@
 
 require("./styles.css")
 
-var React = require("react")
-var B     = require("./Button")
+var React     = require("react")
+var B         = require("./Button")
+var store     = require("./store")
+var subscribe = require("oro-dispatcher/lib/subscribe")
 
 function state() {
-  return {}
+  return {
+    open: store.getOpen()
+  }
 }
 
 module.exports = React.createClass({
   displayName : "Money/Form",
-  getInitialState() { return {} },
+  mixins      : [subscribe(store, state)],
+
   emailRes(data) { this.setState({email: "james@bjorkman.ca", status: "How much would you like to send?"}) },
   getEmail(host) {},
 
@@ -24,6 +29,8 @@ module.exports = React.createClass({
   render() {
     var {state}         = this
     var {status, email} = state
+
+    if (!store.isOpen(this.props.uuid)) return null;
 
     return <div className="Money">
       {status && <div className="MoneyStatus">{status}</div>}
