@@ -2,7 +2,7 @@ class Api::V1::MessagesController < ApplicationController
   before_filter :basic_auth, except: 'receive'
 
   def index
-    render json: {messages: Messages.limit(50).order('id desc')}
+    render json: Message.limit(50).order("id desc"), each_serializer: MessageSerializer
   end
 
   def create

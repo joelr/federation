@@ -31,7 +31,10 @@ bin/rake db:create db:migrate
 
 
 Hosts: 
-http://localhost:3000/api/v1/hosts
+/api/v1/hosts
+get local:
+/api/v1/hosts/local
+
 
 Message:
 
