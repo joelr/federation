@@ -2,7 +2,7 @@ class Api::V1::MessagesController < ApplicationController
   before_filter :basic_auth, except: [:receive, :validate]
 
   def index
-    render json: Message.limit(50).order("id desc"), each_serializer: MessageSerializer
+    render json: , each_serializer: MessageSerializer
   end
 
   def create
@@ -33,5 +33,14 @@ class Api::V1::MessagesController < ApplicationController
 
   def create_params
     params.symbolize_keys.slice :text, :host, :filter, :password
+  end
+
+
+  def messages
+    if params[:hosts].presence
+      Message.where(sender_host: params[:hosts].split).limit(50).order("id desc")
+    else
+      Message.limit(50).order("id desc")
+    end
   end
 end

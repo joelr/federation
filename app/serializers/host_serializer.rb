@@ -1,6 +1,6 @@
 class HostSerializer < ActiveModel::Serializer
   require 'digest'
-  attributes :host, :name, :uuid, :paypal_email, :charity, :charity_url
+  attributes :host, :name, :uuid, :paypal_email, :charity, :charity_url, :last_broadcasted_at
 
   def uuid
     Digest::MD5.hexdigest object.host
@@ -16,5 +16,13 @@ class HostSerializer < ActiveModel::Serializer
 
   def include_name?
     !!name.presence
+  end
+
+  def last_broadcasted_at
+    object.messages.first.created_at.to_i * 1000
+  end
+
+  def include_last_broadcasted_at
+    object.messages.any?
   end
 end
