@@ -1,11 +1,17 @@
 "use strict";
 
+require("./styles.css")
+
 var React    = require("react")
 var factory  = require("../factory")
 var {string} = React.PropTypes
 
-var MoneyIcon  = factory("i", "fa fa-money")
+var Name       = factory("div", "HostName")
+var Host       = factory("div", "HostHost")
 var DonateIcon = factory("i", "fa fa-heart")
+var Donate     = factory("a", {className: "HostDonate", target: "_blank"})
+
+var Money = require("./Money")
 
 module.exports = React.createClass({
   displayname : "Host",
@@ -19,13 +25,13 @@ module.exports = React.createClass({
   },
 
   render() {
-    var {name, host} = this.props
+    var {name, host, charity_url: href, paypal_email: email} = this.props
 
     return <div className="Host">
-      {name ? name : host}
-      {name && host}
-      <MoneyIcon/>
-      <DonateIcon/>
+      <Name>{name ? name : host}</Name>
+      <Host>{name && host}</Host>
+      {email && <Money email={email}/>}
+      {href && <Donate href={href}><DonateIcon/></Donate>}
     </div>
   }
 })

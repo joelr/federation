@@ -1,0 +1,42 @@
+.Host
+  padding        : 5px 13px
+  display        : flex
+  font-size      : 10px
+  text-transform : uppercase
+  font-weight    : 200
+  color          : rgba(0,0,25,0.5)
+  align-items    : baseline
+
+  & + &
+    border-top: 1px solid rgba(0,0,25,0.25)
+
+  .fa
+    margin-left : 8px
+
+  form button
+    padding    : 0
+    margin     : 0
+    border     : 0
+    color      : rgba(0,0,25,0.25)
+    background : transparent
+    cursor     : pointer
+
+    &:hover, &:focus
+      color: rgba(0,0,25,0.75)
+
+.HostName
+  margin-right   : 5px
+
+.HostHost
+  flex           : 1
+  text-overflow  : ellipsis
+  white-space    : nowrap
+  overflow       : hidden
+  color          : rgba(0,0,25,0.25)
+
+.HostDonate
+  color : rgba(0,0,25,0.25)
+
+  &:hover
+    color : tomato
+
