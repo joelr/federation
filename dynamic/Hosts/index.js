@@ -22,8 +22,6 @@ module.exports = React.createClass({
     var {state} = this
     var {hosts} = state
 
-  console.log("render", hosts)
-
     return <div className="Hosts">
       {map(hosts, d => <Host {...d} key={d.uuid}/>)}
     </div>

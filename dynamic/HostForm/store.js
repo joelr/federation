@@ -20,8 +20,6 @@ module.exports = projection("HOST_FORM", {
 }, function(payload) {
   var {actionType, host} = payload.action
 
-  console.log(actionType, payload.action)
-
   switch (actionType) {
     case "HOST_FORM_UPDATE_HOST":
       setHost(host)
