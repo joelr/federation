@@ -2,7 +2,12 @@ class Api::V1::HostsController < ApplicationController
   before_filter :basic_auth, only: [:index, :local, :add]
 
   def index
-    render json: Host.all
+    hosts = Host.all
+    hosts = hosts.map {|host|
+      host.localhost = localhost
+      host
+    }
+    render json: hosts
   end
 
   def local

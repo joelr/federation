@@ -1,5 +1,5 @@
 class Host < ActiveRecord::Base
-  attr_accessor :password
+  attr_accessor :password, :localhost
 
   def self.build_from_payload params
     actual_host = host_from_url(params[:url])
@@ -53,6 +53,14 @@ class Host < ActiveRecord::Base
 
   def authenticate pass
     password == pass
+  end
+
+  def charity
+    if charity_id == "123" || charity_id.blank?
+      "2050"
+    else
+      charity_id
+    end
   end
 
 end
