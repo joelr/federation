@@ -15,7 +15,7 @@ class HostBroadcaster
 
   def self.broadcast_local
     Host.local_hosts.each do |host|
-      broadcast host
+      broadcast host, 'host_register'
     end
     broadcast_all
   end

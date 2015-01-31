@@ -19,15 +19,11 @@ class FederationBroadcaster
 
   def self.publish_to_host payload, host
     begin
-      EventMachine.run {
-        http1 = EventMachine::HttpRequest.new("#{host.url}/api/v1/#{payload[:type]}").post body: payload[:data]
-        http1.callback do
-          puts http1.response
-          EventMachine.stop
-        end
-      }
-
-      #puts result.body
+      result = HTTParty.post("#{host.url}/api/v1/#{payload[:type]}", 
+        body: payload[:data].to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+      Hashie::Mash.new(JSON.parse(result.body))
     rescue Errno::ECONNREFUSED
       puts "#{host.url}/api/v1/#{payload[:type]} FAILED".inspect
     end
