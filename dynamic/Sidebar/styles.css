@@ -1,0 +1,40 @@
+.Sidebar
+  position     : absolute
+  position     : fixed
+  background   : white
+  top          : 0
+  left         : 0
+  bottom       : 0
+  border-right : 1px solid rgba(0,0,25,0.25)
+  color        : rgba(0,0,25,0.5)
+  width        : 1px
+  box-sizing   : border-box
+
+  &.u-open
+    width : 285px
+
+.SidebarToggle
+  position                   : absolute
+  top                        : 90px
+  left                       : 100%
+  background                 : white
+  border-top-right-radius    : 3px
+  border-bottom-right-radius : 3px
+  border                     : 1px solid rgba(0,0,25,0.25)
+  border-left                : 0
+  padding                    : 13px 8px 13px 8px
+  color                      : rgba(0,0,25,0.25)
+  cursor                     : pointer
+
+  &:hover, &:focus
+    color: rgba(0,0,25,0.75)
+
+.SidebarOverflow
+  position   : absolute
+  top        : 0
+  right      : 0
+  bottom     : 0
+  width      : 285px
+  box-sizing : border-box
+  padding    : 13px
+
