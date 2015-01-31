@@ -19,7 +19,9 @@ class HostSerializer < ActiveModel::Serializer
   end
 
   def last_broadcasted_at
-    object.messages.first.created_at.to_i * 1000
+    if object.messages.any?
+      object.messages.first.created_at.to_i * 1000
+    end
   end
 
   def include_last_broadcasted_at

@@ -37,10 +37,14 @@ class Api::V1::MessagesController < ApplicationController
 
 
   def messages
+    scope = Message.all
+    if params[:since]
+      scope = scope.where("created_at > ?", DateTime.parse(params[:since]))
+    end
     if params[:hosts].presence
-      Message.where(sender_host: params[:hosts].split(",")).limit(50).order("id desc")
+      scope.where(sender_host: params[:hosts].split(",")).limit(50).order("id desc")
     else
-      Message.limit(50).order("id desc")
+      scope.limit(50).order("id desc")
     end
   end
 end
