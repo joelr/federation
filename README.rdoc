@@ -38,12 +38,12 @@ get local:
 add:
 POST /api/v1/hosts/add
 params: host
-EG: curl -u user:lol --data "host=testpublisher.herokuapp.com" http://localhost:5000/api/v1/hosts/add
+EG: curl -u user:lol --data "host=http://federation-example.herokuapp.com" http://localhost:5000/api/v1/hosts/add
 
 Tips:
 
 Request email:
-curl -u user:lol --data "host=localhost" http://localhost:5000/api/v1/request_email
+curl -u user:lol --data "host=james.coopcoopcoop.net" http://oh-hi.coopcoopcoop.net/api/v1/request_email
 
 
 
