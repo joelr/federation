@@ -17,11 +17,13 @@ class FederationBroadcaster
 
   def self.publish_to_host payload, host
     begin
-      Timeout::timeout(2) {
+      Timeout::timeout(15) {
+        puts "publishing to #{host.url}"
         result = HTTParty.post("#{host.url}/api/v1/#{payload[:type]}", 
           body: payload[:data].to_json,
           headers: { 'Content-Type' => 'application/json' }
         )
+        puts result.body.inspect
         Hashie::Mash.new(JSON.parse(result.body))
       }
     rescue Errno::ECONNREFUSED, Timeout::Error
