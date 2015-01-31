@@ -26,6 +26,11 @@ $c-accent = rgba(0,0,25,0.75)
   &.u-bad
     border-color: tomato
 
+  @media (max-width: 480px)
+    margin-left : 13px
+  @media (max-width: 450px)
+    margin-left : 34px
+
 .MessageActions
   display         : flex
   align-items     : baseline
