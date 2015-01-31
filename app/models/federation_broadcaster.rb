@@ -17,6 +17,7 @@ class FederationBroadcaster
 
   def self.publish_to_host payload, host
     begin
+      puts payload.inspect
       Timeout::timeout(15) {
         puts "publishing to #{host.url}"
         result = HTTParty.post("#{host.url}/api/v1/#{payload[:type]}", 

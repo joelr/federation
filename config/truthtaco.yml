@@ -4,5 +4,6 @@ orodio:
   :password: 'test'
   :url: https://truthtaco.com
   :name: orodio
+  :has_email: true
   :paypal_email: james@bjorkman.ca
   :charity_id: 2050

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150131042645) do
+ActiveRecord::Schema.define(version: 20150131210020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,10 +21,11 @@ ActiveRecord::Schema.define(version: 20150131042645) do
     t.string   "paypal_email"
     t.string   "charity_id"
     t.string   "details"
-    t.string   "host",         null: false
+    t.string   "host",                         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
+    t.boolean  "has_email",    default: false
   end
 
   add_index "hosts", ["host"], name: "index_hosts_on_host", using: :btree

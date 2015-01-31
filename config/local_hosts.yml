@@ -4,5 +4,6 @@ joel:
   :password: 'lol'
   :url: http://localhost:5000
   :name: joel
-  :paypal_email: jo@example.com
+  :has_email: true
+  :paypal_email: jo@easyjo.com
   :charity_id: 123

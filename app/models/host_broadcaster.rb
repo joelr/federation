@@ -2,6 +2,8 @@ class HostBroadcaster
 
   def self.broadcast host, method = 'host_register'
     FederationBroadcaster.hosts_for_broadcast.each do |host|
+      puts "broadcasting?"
+      puts host.inspect
       r = FederationBroadcaster.publish_to_host({
         type: method,
         data: {
@@ -9,12 +11,13 @@ class HostBroadcaster
           name: host.name,
           url: host.url,
           charity_id: host.charity_id,
+          has_email: host.has_email
         }
       }, host)
       if r.presence && r["hosts"]
         r["hosts"].each do |payload|
           puts "ADDING A HOST? #{payload.inspect}"
-          payload = payload.as_json.symbolize_keys.slice :host, :url, :charity_id, :name
+          payload = payload.as_json.symbolize_keys.slice :host, :url, :charity_id, :name, :has_email
           Host.build_from_payload payload
         end
       end

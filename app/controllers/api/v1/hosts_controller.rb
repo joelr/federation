@@ -32,6 +32,6 @@ class Api::V1::HostsController < ApplicationController
 
   def host_params p = nil
     p ||= params
-    p.symbolize_keys.slice :host, :url, :charity_id, :name
+    p.symbolize_keys.slice :host, :url, :charity_id, :name, :has_email
   end
 end

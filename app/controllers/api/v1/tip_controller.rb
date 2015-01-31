@@ -2,8 +2,9 @@ class Api::V1::TipController < ApplicationController
   before_filter :basic_auth, only: [:request_email]
 
   def request_email
-    TipRequester.new(localhost).request_email_from_host host
-    render_ok
+    email = TipRequester.new(localhost).request_email_from_host(host)
+    render json: {paypal_email: email.paypal_email}
+    #render_ok
   end
 
   def send_email
@@ -12,8 +13,9 @@ class Api::V1::TipController < ApplicationController
   end
 
   def inbound_email_request
-    TipRequester.new(localhost).send_email_to_host host
-    render_ok
+    #TipRequester.new(localhost).send_email_to_host host
+    #render_ok
+    render json: {paypal_email: localhost.paypal_email}
   end
 
   def inbound_email_response

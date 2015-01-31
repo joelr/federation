@@ -4,6 +4,7 @@ joel:
   :password: 'lol'
   :url: http://federation-example.herokuapp.com
   :name: Fed
+  :has_email: false
   :paypal_email: jo+fed@easyjo.com
   :charity_id: 2050
 oh:
@@ -11,6 +12,7 @@ oh:
   :password: 'lol'
   :url: http://oh-hi.coopcoopcoop.net
   :name: Oh hi
+  :has_email: false
   :paypal_email: jo+hi@easyjo.com
   :charity_id: 2050
 james:
@@ -18,6 +20,7 @@ james:
   :password: 'lol'
   :url: http://james.coopcoopcoop.net
   :name: James Coop
+  :has_email: false
   :paypal_email: jo+hi@easyjo.com
   :charity_id: 2050
 joel2:
@@ -25,5 +28,6 @@ joel2:
   :password: 'lol'
   :url: http://joel.coopcoopcoop.net
   :name: Jo Bloggs
-  :paypal_email: jo+hi@easyjo.com
+  :has_email: true
+  :paypal_email: jo@easyjo.com
   :charity_id: 2050

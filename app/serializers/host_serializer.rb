@@ -10,8 +10,8 @@ class HostSerializer < ActiveModel::Serializer
     "http://www.justgiving.com/4w350m3/donation/direct/charity/#{object.charity}?amount=5&currency=AUD&exitUrl=#{object.localhost.url}"
   end
 
-  def include_paypal_email?
-    !!paypal_email.presence
+  def paypal_email
+    object.has_email?
   end
 
   def include_name?

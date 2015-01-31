@@ -44,6 +44,7 @@ class Host < ActiveRecord::Base
     end
 
     YAML.load_file(data_file).map do |_, attributes|
+      puts attributes.inspect
       h = Host.new attributes
       h
     end
