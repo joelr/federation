@@ -1,22 +1,26 @@
 class TipRequester
   attr_accessor :localhost
 
-  def self.initialize host
+  def initialize host
     @localhost = host
   end
 
   def request_email_from_host host
-    FederationBroadcaster.publish_to_host(host, {
+    FederationBroadcaster.publish_to_host({
       type: 'inbound_email_request',
-      host: localhost,
-    }
+      data: {
+        host: localhost.host,
+      }
+    }, host)
   end
 
-  def request_email_from_host host
-    FederationBroadcaster.publish_to_host(host, {
+  def send_email_to_host host
+    FederationBroadcaster.publish_to_host({
       type: 'inbound_email_response',
-      host: localhost,
-      email: localhost.paypal_email,
-    }
+      data: {
+        host: localhost.host,
+        email: localhost.paypal_email,
+      }
+    }, host)
   end
 end

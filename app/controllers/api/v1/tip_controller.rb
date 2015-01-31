@@ -17,6 +17,8 @@ class Api::V1::TipController < ApplicationController
   end
 
   def inbound_email_response
+    host.update_attributes paypal_email: params[:email]
+    host.save
     render_ok
   end
 

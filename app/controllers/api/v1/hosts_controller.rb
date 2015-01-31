@@ -17,7 +17,7 @@ class Api::V1::HostsController < ApplicationController
 
   def register
     Host.build_from_payload host_params
-    render json: {hosts: Host.all}
+    render json: Host.all, each_serializer: PrivateHostSerializer
   end
 
   def discover
@@ -27,6 +27,6 @@ class Api::V1::HostsController < ApplicationController
 
   def host_params p = nil
     p ||= params
-    p.symbolize_keys.slice :host, :url, :paypal_email, :charity_id, :name
+    p.symbolize_keys.slice :host, :url, :charity_id, :name
   end
 end

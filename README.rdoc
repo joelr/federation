@@ -40,6 +40,12 @@ POST /api/v1/hosts/add
 params: host
 EG: curl -u user:lol --data "host=testpublisher.herokuapp.com" http://localhost:5000/api/v1/hosts/add
 
+Tips:
+
+Request email:
+curl -u user:lol --data "host=localhost" http://localhost:5000/api/v1/request_email
+
+
 
 Message:
 
