@@ -5,6 +5,9 @@ Rails.application.routes.draw do
       resources :hosts, only: :index
       resources :messages
 
+      get 'clear' => 'debug#clear'
+      get 'broadcast' => 'debug#broadcast'
+
       get 'hosts/local' => 'hosts#local'
       get 'messages/validate/:uuid' => 'messages#validate'
 
