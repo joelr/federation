@@ -1,5 +1,7 @@
 "use strict";
 
+require("./styles.css")
+
 var React     = require("react")
 var factory   = require("../factory")
 var store     = require("./store")
@@ -21,6 +23,8 @@ module.exports = React.createClass({
 
   render() {
     var {messages} = this.state
+
+    if (messages.length === 0) return null;
 
     return <Messages>
       {map(messages, d => <Message {...d} key={d.uuid}/>)}
