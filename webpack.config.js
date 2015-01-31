@@ -16,12 +16,12 @@ module.exports = {
     { loaders :
       [ { test    : /\.js$/
         , exclude : "node_modules"
-        , loader  : "jsx-loader?harmony&stripTypes!6to5-loader?experimental"
+        , loader  : "jsx-loader?harmony&stripTypes"
         }
 
       , { test    : /\.css$/
         , exclude : "node_modules"
-        , "loader": "style-loader!css-loader!autoprefixer-loader!stylus-loader"
+        , loader  : "style-loader!css-loader!autoprefixer-loader!stylus-loader"
         }
     ]
   }
