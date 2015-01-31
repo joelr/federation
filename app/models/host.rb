@@ -4,9 +4,14 @@ class Host < ActiveRecord::Base
   def self.build_from_payload params
     actual_host = host_from_url(params[:url])
     host = Host.where(host: actual_host).first_or_initialize
-    puts host.inspect
-    puts puts params.inspect 
     host.update_attributes params
+  end
+
+  def self.add_host host
+    actual_url = url_from_host(params[:url])
+    actual_host = host_from_url(host)
+    host = Host.where(host: actual_host).first_or_initialize
+    host.update_attributes url: actual_url
   end
 
   def self.find_local host
@@ -24,6 +29,18 @@ class Host < ActiveRecord::Base
 
   def self.host_from_url url
     url.downcase.split("://").last.split(":").first
+  end
+
+  def self.url_from_host host
+    if host.include?("://")
+      host
+    else
+      if Rails.env.development?
+        "http://#{host}:5000"
+      else
+        "http://#{host}"
+      end
+    end
   end
 
   def authenticate pass
