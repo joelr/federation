@@ -2,13 +2,7 @@ class FederationBroadcaster
 
   def self.publish payload
     hosts_for_broadcast.each do |host|
-      puts host.inspect
-      puts "#{host.url}/api/v1/#{payload[:type]}".inspect
-      result = HTTParty.post("#{host.url}/api/v1/#{payload[:type]}", 
-        body: payload[:data].to_json,
-        headers: { 'Content-Type' => 'application/json' }
-      )
-      puts result.body
+      publish_to_host payload, host
     end
   end
 
@@ -18,6 +12,20 @@ class FederationBroadcaster
       Host.all.reject{ |host| local_hosts.include?(host.host.downcase) }
     else
       Host.all.to_a + Host.local_hosts
+    end
+  end
+
+  private
+
+  def self.publish_to_host payload, host
+    begin
+      result = HTTParty.post("#{host.url}/api/v1/#{payload[:type]}", 
+        body: payload[:data].to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+      puts result.body
+    rescue Errno::ECONNREFUSED
+      puts "#{host.url}/api/v1/#{payload[:type]} FAILED".inspect
     end
   end
 end

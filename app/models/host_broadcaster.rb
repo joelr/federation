@@ -1,8 +1,8 @@
 class HostBroadcaster
 
-  def self.broadcast host
+  def self.broadcast host, method = 'host_register'
     FederationBroadcaster.publish({
-      type: 'host_register',
+      type: method,
       data: {
         host: host.host,
         name: host.name,
@@ -16,6 +16,14 @@ class HostBroadcaster
   def self.broadcast_local
     Host.local_hosts.each do |host|
       broadcast host
+    end
+    broadcast_all
+  end
+
+  #broadcast all sends a discover, which doesn't republish.
+  def self.broadcast_all
+    Host.all.each do |host|
+      broadcast host, 'discover'
     end
   end
 end

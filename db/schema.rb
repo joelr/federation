@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150131030837) do
+ActiveRecord::Schema.define(version: 20150131042645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,10 +37,14 @@ ActiveRecord::Schema.define(version: 20150131030837) do
     t.string   "host",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uuid"
+    t.string   "filter"
   end
 
+  add_index "messages", ["filter"], name: "index_messages_on_filter", using: :btree
   add_index "messages", ["sender_host"], name: "index_messages_on_sender_host", using: :btree
   add_index "messages", ["type"], name: "index_messages_on_type", using: :btree
+  add_index "messages", ["uuid"], name: "index_messages_on_uuid", using: :btree
 
   create_table "subscriptions", force: true do |t|
     t.string   "filter"

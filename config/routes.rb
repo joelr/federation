@@ -2,7 +2,12 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :hosts, only: :index
+      resources :messages
+
+      post "messages/receive" => 'messages#receive'
       post "host_register" => 'hosts#register'
+      post "discover" => 'hosts#discover'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

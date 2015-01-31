@@ -29,5 +29,23 @@ CREATE DATABASE federation_dev
 
 bin/rake db:create db:migrate
 
+
+Hosts: 
+http://localhost:3000/api/v1/hosts
+
+Message:
+
+Index:
+GET /api/v1/messages
+
+Create/Publish:
+POST /api/v1/messages/create
+:text The message
+:host Message for specific host
+:filter Hashtag/channel here
+
+Boot:
+HostBroadcaster.broadcast_local
+
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
