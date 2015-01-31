@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+git push guarded-cove-7063 master
+git push federation-example master
+heroku run rake db:migrate --app=guarded-cove-7063
+heroku run rake db:migrate --app=federation-example
