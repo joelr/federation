@@ -14,12 +14,12 @@
   font-size      : 21px
   line-height    : 21px
 
-  @media (max-width: 340px)
-    max-width: 300px
+  @media (max-width: 440px)
+    max-width : 300px
 
 .Application_main
   max-width : 420px
   margin    : 13px auto 34px
 
-  @media (max-width: 340px)
-    max-width: 300px
+  @media (max-width: 440px)
+    max-width : 300px

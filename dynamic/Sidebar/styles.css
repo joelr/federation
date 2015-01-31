@@ -9,13 +9,14 @@
   color        : rgba(0,0,25,0.5)
   width        : 1px
   box-sizing   : border-box
+  transition   : width 0.15s linear
 
   &.u-open
     width : 285px
 
 .SidebarToggle
   position                   : absolute
-  top                        : 90px
+  top                        : 55px
   left                       : 100%
   background                 : white
   border-top-right-radius    : 3px
@@ -25,6 +26,7 @@
   padding                    : 13px 8px 13px 8px
   color                      : rgba(0,0,25,0.25)
   cursor                     : pointer
+  font-size                  : 13px
 
   &:hover, &:focus
     color: rgba(0,0,25,0.75)
