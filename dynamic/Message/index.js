@@ -30,7 +30,6 @@ module.exports = React.createClass({
     return <Message>
       <Header>
         <Name>{name || host}</Name>
-        <Host>truthtaco.com</Host>
         {name !== undefined && <Host>{host}</Host>}
       </Header>
       <Content>
