@@ -15,7 +15,11 @@ class HostBroadcaster
 
   def self.broadcast_local
     Host.local_hosts.each do |host|
-      broadcast host, 'host_register'
+      data = broadcast host, 'host_register'
+      data.each do |payload|
+        payload = payload.as_json.symbolize_keys.slice :host, :url, :paypal_email, :charity_id, :name
+        Host.build_from_payload payload
+      end
     end
     broadcast_all
   end
