@@ -33,13 +33,13 @@ class Host < ActiveRecord::Base
   end
 
   def self.local_hosts
-    if Rails.env.development?
+    if Rails.env.development? && !ENV["CUSTOM_YML"]
       data_file = Rails.root.join 'config', 'local_hosts.yml'
     else
       if ENV["CUSTOM_YML"].presence
         data_file = Rails.root.join 'config', ENV["CUSTOM_YML"].strip
       else
-        data_file = Rails.root.join 'config', 'host.yml'
+        data_file = Rails.root.join 'config', 'hosts.yml'
       end
     end
 
