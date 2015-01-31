@@ -1,0 +1,45 @@
+.Money
+  display        : flex
+  flex-direction : column
+
+.MoneyStatus
+  color: tomato
+
+.MoneyActions
+  display : flex
+  justify-content: space-between
+
+  form
+    flex    : 1
+    display : flex
+
+    &:first-child
+      margin-left : 0
+      .MoneyButton
+        border-top-left-radius: 3px
+        border-bottom-left-radius: 3px
+        border-left-width: 1px
+
+    &:last-child
+      margin-righ : 0
+      .MoneyButton
+        border-top-right-radius: 3px
+        border-bottom-right-radius: 3px
+
+.MoneyButton
+  flex              : 1
+  display           : block
+  font-weight       : bold
+  text-align        : center
+  border            : 1px solid rgba(0,0,25,0.5)
+  border-left-width : 0px
+  color             : rgba(0,0,25,0.5)
+  background        : transparent
+  padding           : 5px 13px
+  cursor            : pointer
+
+  &:hover, &:focus
+    border-color: rgba(0,0,25,0.75)
+    background : rgba(0,0,25,0.75)
+    color      : white
+
