@@ -36,7 +36,11 @@ class Host < ActiveRecord::Base
     if Rails.env.development?
       data_file = Rails.root.join 'config', 'local_hosts.yml'
     else
-      data_file = Rails.root.join 'config', 'hosts.yml'
+      if ENV["CUSTOM_YML"].presence
+        data_file = Rails.root.join 'config', ENV["CUSTOM_YML"].strip
+      else
+        data_file = Rails.root.join 'config', 'host.yml'
+      end
     end
 
     YAML.load_file(data_file).map do |_, attributes|

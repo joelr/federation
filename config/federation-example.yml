@@ -1,0 +1,29 @@
+---
+joel:
+  :host: federation-example.herokuapp.com
+  :password: 'lol'
+  :url: http://federation-example.herokuapp.com
+  :name: Fed
+  :paypal_email: jo+fed@easyjo.com
+  :charity_id: 2050
+oh:
+  :host: oh-hi.coopcoopcoop.net
+  :password: 'lol'
+  :url: http://oh-hi.coopcoopcoop.net
+  :name: Oh hi
+  :paypal_email: jo+hi@easyjo.com
+  :charity_id: 2050
+james:
+  :host: james.coopcoopcoop.net
+  :password: 'lol'
+  :url: http://james.coopcoopcoop.net
+  :name: James Coop
+  :paypal_email: jo+hi@easyjo.com
+  :charity_id: 2050
+joel2:
+  :host: joel.coopcoopcoop.net
+  :password: 'lol'
+  :url: http://joel.coopcoopcoop.net
+  :name: Jo Bloggs
+  :paypal_email: jo+hi@easyjo.com
+  :charity_id: 2050
