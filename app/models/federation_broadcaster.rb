@@ -15,8 +15,6 @@ class FederationBroadcaster
     end
   end
 
-  private
-
   def self.publish_to_host payload, host
     begin
       Timeout::timeout(2) {

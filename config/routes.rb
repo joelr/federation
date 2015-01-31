@@ -14,6 +14,14 @@ Rails.application.routes.draw do
       post "messages/receive" => 'messages#receive'
       post "host_register" => 'hosts#register'
       post "discover" => 'hosts#discover'
+
+
+
+      post 'request_email' => 'tip#request_email'
+      post 'send_email' => 'tip#send_email'
+      post 'inbound_email_request' => 'tip#inbound_email_request'
+      post 'inbound_email_response' => 'tip#inbound_email_response'
+
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

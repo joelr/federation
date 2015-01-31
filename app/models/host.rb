@@ -14,6 +14,10 @@ class Host < ActiveRecord::Base
     host.update_attributes url: actual_url
   end
 
+  def self.find_host host
+    Host.where(host: host.downcase).first
+  end
+
   def self.find_local host
     local_hosts.select{|h| h.host == host.downcase}.first
   end
