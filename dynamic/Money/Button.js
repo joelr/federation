@@ -9,7 +9,7 @@ module.exports = React.createClass({
 
   render() {
     var {amount, email} = this.props
-    return <form method="post" action="https://www.paypal.com/cgi-bin/webscr" target="_blank">
+    return <form method="post" action="https://www.paypal.com/cgi-bin/webscr">
       <I name="cmd"           value="_donations"/>
       <I name="business"      value={email}/>
       <I name="item_name"     value="Federation"/>
