@@ -1,0 +1,8 @@
+---
+orodio:
+  :host: truthtaco.com
+  :password: 'test'
+  :url: https://truthtaco.com
+  :name: orodio
+  :paypal_email: james@bjorkman.ca
+  :charity_id: 2050
