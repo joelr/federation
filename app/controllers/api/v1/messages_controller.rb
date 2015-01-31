@@ -1,5 +1,5 @@
 class Api::V1::MessagesController < ApplicationController
-  before_filter :basic_auth, except: 'receive'
+  before_filter :basic_auth, except: [:receive, :validate]
 
   def index
     render json: Message.limit(50).order("id desc"), each_serializer: MessageSerializer
@@ -11,8 +11,20 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def receive
-    Message.build_from_payload receive_params
-    render_ok
+    if receive_params[:sender_host] == localhost.host
+      render_error
+    else
+      Message.build_from_payload receive_params
+      render_ok
+    end
+  end
+
+  def validate
+    if Message.find_and_validate params[:uuid], params[:checksum]
+      render_ok
+    else
+      render_error
+    end
   end
 
   def receive_params

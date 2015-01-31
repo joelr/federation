@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     render json: {status: 'ok'}
   end
 
+  def render_error
+    render json: {status: 'error'}
+  end
+
   def localhost
     @localhost ||= Host.find_local(request.host)
   end
