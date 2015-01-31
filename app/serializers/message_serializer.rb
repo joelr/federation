@@ -1,6 +1,6 @@
 class MessageSerializer < ActiveModel::Serializer
   require 'digest'
-  attributes :text, :sender_host, :filter, :created_at, :uuid, :sender_name, :encrypted
+  attributes :text, :sender_host, :filter, :created_at, :uuid, :sender_name, :encrypted, :radio
 
   def created_at
     object.created_at.to_i * 1000
@@ -17,5 +17,9 @@ class MessageSerializer < ActiveModel::Serializer
 
   def encrypted
     (text.strip || "")[-1] == "=" || (text.strip || "").include?("/")
+  end
+
+  def radio
+    uuid.include?(" ")
   end
 end

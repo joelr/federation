@@ -27,6 +27,7 @@ class Message < ActiveRecord::Base
 
   def self.build_from_payload payload
     message = Message.where(uuid: payload[:uuid]).first_or_initialize
+    payload[:host] = payload[:host].presence || '*'
     message.text = payload[:text]
     message.sender_host = payload[:sender_host]
     message.host = payload[:host]
